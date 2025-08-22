@@ -88,20 +88,15 @@ p_load(haven,   #Leer archivos .dta
 ```
 ### Transformación de datos en R
 ```{r}
-#Fijar el directorio de trabajo
-getwd()
-setwd('/Users/jorgeviafara/Documents/Talleres_eva_impacto/Taller_1')
+# Definir URL del repositorio
+github_url <- "https://raw.githubusercontent.com/GeorgeWton1986/Eva_Impacto_Meca/main"
 
-#Inspeccionar el directorio de trabajo
-list.files()
-list.dirs()
+# Cargar datos
+corruption_data <- read_dta(paste0(github_url, "/Data/corruption_SV.dta"))
 
-#Leer la base de datos corruption.dta
-corruption_0 <- read_dta("corruption_SV.dta")
-
-#Visualizar los datos de corruption
-#glimpse(corruption_0)
-#summary(corruption_0)
+# Ver estructura de los datos
+glimpse(corruption_data)
+head(corruption_data)
 
 #Seleccion de columnas
 corruption_1 <- corruption_0 %>%

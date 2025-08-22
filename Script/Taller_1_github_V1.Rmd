@@ -99,7 +99,7 @@ glimpse(corruption_data)
 head(corruption_data)
 
 #Seleccion de columnas
-corruption_1 <- corruption_0 %>%
+corruption_1 <- corruption_data %>%
   select(prop, Corrupt, Auditada, clavedelaescuela, year, 
          GradoSecundaria, PartidoDesf, AlreadyAudited, 
          CorruptPast, HOMI_CAP_MUN, total, MismoPartidoG)

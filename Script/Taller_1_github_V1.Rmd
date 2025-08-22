@@ -92,7 +92,7 @@ p_load(haven,   #Leer archivos .dta
 github_url <- "https://raw.githubusercontent.com/GeorgeWton1986/Eva_Impacto_Meca/main"
 
 # Cargar datos
-corruption_data <- read_dta(paste0(github_url, "/Data/corruption_SV.dta"))
+corruption_data <- read_dta(paste0(github_url, "/Data/corruption_SV_github.dta"))
 
 # Ver estructura de los datos
 glimpse(corruption_data)

@@ -1,8 +1,11 @@
 ---
-title: "TALLER 1"
+title: "EVALUACIÓN DE IMPACTO - TALLER 1"
 author: "VIAFARA MORALES, JORGE ELIECER"
-date: "2025-08-20"
-output: html_document
+date: "2025-08-23"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
 ---
 
 
@@ -26,34 +29,36 @@ Escriban matemáticamente la regresión a estimar y expliquen claramente a qué 
 ### Solución Primer Punto
 De acuerdo con el enunciado la especificación principal del autor puede escribirse de la siguiente manera:
 
-$$
-prop_{cgmt} = \alpha+\beta_1 Corrupt_{mt}+\beta_2Auditada_{mt}+Clavedelaescuela_{c}+year_{t}+grade_{gmt}+X_{mt}+u_{cgmt}  \quad (1)
-$$
+\begin{align}
+prop_{cgmt} = \alpha &+ \beta_1 Corrupt_{mt} + \beta_2 Auditada_{mt} + Clavedelaescuela_{c} \nonumber \\
+&+ year_{t} + grade_{gmt} + X_{mt} + u_{cgmt} \quad
+\end{align}
+
 Nota: la nomenclatura utilizada en la ecución (1) sigue la convención de subíndices para indicar el nivel de agregación de las variables.
 
 A continuaciòn, se definen los terminos de la ecuación (1):
 
--   **prop_{cgmt}:** Esta es la variable dependiente que estima el resultado potencial de aquellos estudiantes que hicieron trampa en el colegio (c), en el grado (g) del municipio (m) en el año (t). El nivel de agregación de la variable es colegio, grado, municipio y año.
+-   **$prop_{cgmt}$:** Esta es la variable dependiente que estima el resultado potencial de aquellos estudiantes que hicieron trampa en el colegio (c), en el grado (g) del municipio (m) en el año (t). El nivel de agregación de la variable es colegio, grado, municipio y año.
 
--  **Corrupt{mt}:** Esta es una variable dicotómica que toma el valor de uno si hubo corrupción en el municipio (m) en el año (t). El nivel de agregación es municipio y año.
+-  **$Corrupt_{mt}$:** Esta es una variable dicotómica que toma el valor de uno si hubo corrupción en el municipio (m) en el año (t). El nivel de agregación es municipio y año.
 
--  **Auditada_{mt}:** Esta es una variable dicotómica que toma el valor de uno si fueron publicados reportes de auditorías en el municipio (m) en el año (t). El nivel de agregación es municipio y año.
+-  **$Auditada_{mt}$:** Esta es una variable dicotómica que toma el valor de uno si fueron publicados reportes de auditorías en el municipio (m) en el año (t). El nivel de agregación es municipio y año.
 
--  **Clavedelaescuela_{c}:** Esta es una variable de efectos fijos de colegio, que captura las características constantes de cada colegio (c) a lo largo del tiempo. El nivel de agregación es colegio.
+-  **$Clavedelaescuela_{c}$:** Esta es una variable de efectos fijos de colegio, que captura las características constantes de cada colegio (c) a lo largo del tiempo. El nivel de agregación es colegio.
 
--  **year_{t}:** Esta es una variable de efectos fijos de tiempo, que captura las características constantes a lo largo del tiempo (t). El nivel de agregación es año.
+-  **$year_{t}$:** Esta es una variable de efectos fijos de tiempo, que captura las características constantes a lo largo del tiempo (t). El nivel de agregación es año.
 
-- **grade_{gmt}:** Esta es una variable que representa el grado de los estudiantes (g) en el municipio (m) en el año (t). El nivel de agregación es grado, municipio y año.
+- **$grade_{gmt}$:** Esta es una variable que representa el grado de los estudiantes (g) en el municipio (m) en el año (t). El nivel de agregación es grado, municipio y año.
 
-- **X_{mt}:** Este es un vector de variables de control con nivel de agregacion municipio y año, que incluye:
+- **$X_{mt}$:** Este es un vector de variables de control con nivel de agregacion municipio y año, que incluye:
 
-  - **PartidoDesf_{mt}:** El partido político activo en el municipio (m) en el año (t).
-  - **AlreadyAudited_{mt}:** Una variable dicotómica que toma el valor de uno si el municipio fue auditado en el pasado.
-  - **CorruptPast_{mt}:** Una variable dicotómica que toma el valor de uno si el municipio fue corrupto en el pasado.
-  - **HOMI_CAP_MUN_{mt}:** El número de homicidios per cápita a nivel de municipio-año.
-  - **log total_{mt}:** El logaritmo del total de impuestos recolectados en el municipio (m) en el año (t).
-  - **MismoPartidoG_{mt}:** Una variable dicotómica que toma el valor de uno si el partido político del municipio (m) en el año (t) está alineado con el nacional.
-  - **u_{cgmt}:** Este es el término de error que captura las variables no observadas que afectan la variable dependiente (prop) a nivel de colegio (c), grado (g), municipio(m) y año(t).
+  - **$PartidoDesf_{mt}$:** El partido político activo en el municipio (m) en el año (t).
+  - **$AlreadyAudited_{mt}$:** Una variable dicotómica que toma el valor de uno si el municipio fue auditado en el pasado.
+  - **$CorruptPast_{mt}$:** Una variable dicotómica que toma el valor de uno si el municipio fue corrupto en el pasado.
+  - **$HOMI\_CAP\_MUN_{mt}$:** El número de homicidios per cápita a nivel de municipio-año.
+  - **$\log(total)_{mt}$:** El logaritmo del total de impuestos recolectados en el municipio (m) en el año (t).
+  - **$MismoPartidoG_{mt}$:** Una variable dicotómica que toma el valor de uno si el partido político del municipio (m) en el año (t) está alineado con el nacional.
+  - **$u_{cgmt}$:** Este es el término de error que captura las variables no observadas que afectan la variable dependiente (prop) a nivel de colegio (c), grado (g), municipio(m) y año(t).
 
 Manual avanzado de R markdown: https://rpubs.com/ricardo/14631 
 
@@ -68,13 +73,14 @@ d)	Una regresión simple de la variable dependiente contra la independiente prin
 
 La tabla debe tener el formato de presentación tipo artículo y estar completamente en español. Asegúrense de que esta tabla presente únicamente el coeficiente asociado a la variable de interés – i.e., no presente los coeficientes asociados a los controles, el intercepto o los efectos fijos. Debe ser claro, sin embargo, qué es incluido en cada columna. Para esto, pueden seguir el siguiente formato de presentación. 
 
+
 ### Generalidades de R
 ```{r}
 #Limpiar la consola
-cat("\f")
+#cat("\f")
 
 #Limpiar el Global Environment
-rm(list = ls())
+#rm(list = ls())
 
 #Incluir las librerias
 if(!require(pacman)) install.packages("pacman") ; require(pacman)
@@ -86,6 +92,7 @@ p_load(haven,   #Leer archivos .dta
        knitr   #Visualizar tablas adicionales
       )
 ```
+
 ### Transformación de datos en R
 ```{r}
 # Definir URL del repositorio
@@ -95,8 +102,8 @@ github_url <- "https://raw.githubusercontent.com/GeorgeWton1986/Eva_Impacto_Meca
 corruption_data <- read_dta(paste0(github_url, "/Data/corruption_SV_github.dta"))
 
 # Ver estructura de los datos
-glimpse(corruption_data)
-head(corruption_data)
+#glimpse(corruption_data)
+#head(corruption_data)
 
 #Seleccion de columnas
 corruption_1 <- corruption_data %>%
@@ -116,6 +123,7 @@ cat("Observaciones después de limpiar NA's:", nrow(corruption_clean))
 
 #Verificacion de variables
 summary(corruption_clean)
+head(corruption_clean)
 
 ```
 
@@ -123,15 +131,15 @@ summary(corruption_clean)
 
 Una regresión simple de la variable dependiente contra la independiente principal. En este sentido, el modelo_a, se especifica de la siguiente forma:
 
-$$
-prop_{cgmt} = \alpha+\beta_1 Corrupt_{mt}+u_{cgmt}  \quad (2)
-$$
+\begin{equation}
+prop_{cgmt} = \alpha + \beta_1 Corrupt_{mt} + u_{cgmt} \quad
+\end{equation}
+
 ```{r}
 #Regresion del modelo simple.
 
 modelo_a <- lm(prop ~ Corrupt, 
                data = corruption_clean)
-
 
 ```
 ### Solución Punto b)
@@ -139,16 +147,19 @@ modelo_a <- lm(prop ~ Corrupt,
 Una regresión simple de la variable dependiente contra la independiente principal + Controles. Por lo tanto, el modelo_b se especifica de la siguiente forma:
 
 
-$$
-prop_{cgmt} = \alpha+\beta_1 Corrupt_{mt}+\beta_2Auditada_{mt}+grade_{gmt}+PartidoDesf_{mt}+AlreadyAudited_{mt}+CorruptPast_{mt}+HOMICAPMUN_{mt}+MismoPartidoG_{mt}+Log(total)_{mt}+u_{cgmt}  \quad (3)
-$$
+\begin{align}
+prop_{cgmt} = \alpha &+ \beta_1 Corrupt_{mt} + \beta_2 Auditada_{mt} + grade_{gmt} \nonumber \\
+&+ PartidoDesf_{mt} + AlreadyAudited_{mt} + CorruptPast_{mt} \nonumber \\
+&+ HOMICAPMUN_{mt} + MismoPartidoG_{mt} + \log(total)_{mt} + u_{cgmt} \quad
+\end{align}
 
 ```{r}
-#Regresion del modelo simple de la variable dependiente contra la independiente principal + Controles.
+#Regresion del modelo simple de la variable dependiente contra 
+#la independiente principal + Controles.
 
-modelo_b <- lm(prop ~ Corrupt + Auditada + GradoSecundaria + PartidoDesf + AlreadyAudited + CorruptPast + HOMI_CAP_MUN + log_total + MismoPartidoG, 
+modelo_b <- lm(prop ~ Corrupt + Auditada + GradoSecundaria + PartidoDesf 
+               + AlreadyAudited + CorruptPast + HOMI_CAP_MUN + log_total + MismoPartidoG, 
                data = corruption_clean)
-
 
 ```
 
@@ -156,15 +167,18 @@ modelo_b <- lm(prop ~ Corrupt + Auditada + GradoSecundaria + PartidoDesf + Alrea
 
 Una regresión simple de la variable dependiente contra la independiente principal + Efectos fijos.
 
-$$
-prop_{cgmt} = \alpha+\beta_1 Corrupt_{mt}+\beta_2Auditada_{mt}+Clavedelaescuela_{c}+year_{t}+u_{cgmt}  \quad (4)
-$$
+\begin{align}
+prop_{cgmt} = \alpha &+ \beta_1 Corrupt_{mt} + \beta_2 Auditada_{mt} + Clavedelaescuela_{c} \nonumber \\
+&+ year_{t} + u_{cgmt} \quad
+\end{align}
 
 ```{r}
 #Convertir corruption_clean a un data frame de panel
 corruption_panel <- pdata.frame(corruption_clean, index = c("clavedelaescuela", "year"))
 
-#Una regresión simple de la variable dependiente contra la independiente principal + Efectos fijos.
+#Una regresión simple de la variable dependiente contra 
+#la independiente principal + Efectos fijos.
+
 modelo_c <- plm(prop ~ Corrupt + Auditada, data = corruption_panel, 
                 model = "within", 
                 effect = "twoways")
@@ -177,8 +191,11 @@ Una regresión simple de la variable dependiente contra la independiente princip
 
 ```{r}
 
-#Una regresión simple de la variable dependiente contra la independiente principal + Controles + Efectos fijos.
-modelo_d <- plm(prop ~ Corrupt + Auditada + GradoSecundaria + PartidoDesf + AlreadyAudited + CorruptPast + HOMI_CAP_MUN + log_total + MismoPartidoG, 
+#Una regresión simple de la variable dependiente 
+#contra la independiente principal + Controles + Efectos fijos.
+
+modelo_d <- plm(prop ~ Corrupt + Auditada + GradoSecundaria + PartidoDesf 
+                + AlreadyAudited + CorruptPast + HOMI_CAP_MUN + log_total + MismoPartidoG, 
                 data = corruption_panel, 
                 model = "within", 
                 effect = "twoways")
@@ -186,15 +203,16 @@ modelo_d <- plm(prop ~ Corrupt + Auditada + GradoSecundaria + PartidoDesf + Alre
 ```
 
 ### Tabla Resumen de Resultados
-```{r}
-# Tabla final
+```{r results='asis'}
+#Tabla de resumen de resultados
+
 stargazer(modelo_a, modelo_b, modelo_c, modelo_d,
-          type = "text",
+          type = "latex",
           title = "Efecto de la Corrupción sobre la Proporción de Trampa Estudiantil",
           column.labels = c("(1) Simple", "(2) Controles", "(3) EF", "(4) Completo"),
-          #keep = c("Corrupt"),  # Solo mostrar el coeficiente de interés
-          omit = c("Auditada", "GradoSecundaria", "PartidoDesf", "AlreadyAudited", 
-                   "CorruptPast", "HOMI_CAP_MUN", "log_total", "MismoPartidoG", "Constant"),
+          omit = c("Auditada", "GradoSecundaria", "PartidoDesf", 
+                   "AlreadyAudited", "CorruptPast", "HOMI_CAP_MUN", 
+                   "log_total", "MismoPartidoG", "Constant"),
           covariate.labels = c("Corrupción"),
           dep.var.labels = "Proporción de Trampa",
           add.lines = list(
@@ -204,7 +222,14 @@ stargazer(modelo_a, modelo_b, modelo_c, modelo_d,
           ),
           notes = c("Errores estándar en paréntesis.",
                    "*** p<0.01, ** p<0.05, * p<0.1"),
-          notes.append = FALSE)
+          notes.append = FALSE,
+          font.size = "scriptsize",  # Fuente más pequeña
+          column.sep.width = "1pt",  # Separación mínima
+          no.space = TRUE,
+          header = FALSE,
+          table.placement = "htbp",  # Cambiar de "H" a "htbp"
+          float = TRUE,
+          float.env = "table")
 
 ```
 
@@ -217,7 +242,8 @@ Interpreten los resultados encontrados a partir de la primera regresión (estima
 ¿Podemos interpretar esta relación como causal?
 ¿Cuál sería el supuesto de identificación? Argumenten
 
-Respuesta: 
+**Respuesta:**
+
 En primer lugar, es necesario definir los grupos de tratamiento y control para poder interpretar los resultados de la regresión. En este caso, el grupo de tratamiento está compuesto por los colegios ubicados en municipios que presentaron corrupción en el año t, mientras que el grupo de control está conformado por aquellos colegios situados en municipios que no presentaron corrupción en ese mismo año t. 
 
 Segundo lugar, el término supuesto de identificación, se refiere al resultado promedio de los colegios tratados si no hubieran estado expuestos a la corrupcion (Contrafactual), sea igual al resultado promedio de los colegios de control. Es decir, los colegios tratados y los colegios de control deben ser comparables en la ausencia de corrupción. Este término es clave, porque se supone que los colegios tratados y control poseen las mismas características observables y no observables.
@@ -241,7 +267,9 @@ a)¿Cuál es el supuesto de identificación para que esta especificación les pe
 
 ### Solución Cuarto Punto
 ¿Cuál es el supuesto de identificación para que esta especificación les permita hacer interpretaciones causales?
-Respuesta:
+
+**Respuesta:**
+
 El modelo_d presenta la especificación más adecuada al combinar efectos fijos y controles observables. En este sentido, este modelo permite tener un supuesto de identificación más real, debido a que se compara el mismo colegio en diferentes años bajo una condición exogena de corrupción y si no hubiera corrupción. Además, se están teniendo en cuenta las características politicas, financiera y socioeconómicas del municipio en el tiempo t. De esta manera, la heterogeneidad no observada invariante en el tiempo se elimina por causa de los efectos fijos y los controles capturan las variables observables que varian en el tiempo t. Por Lo cual, hace más real la interpretación causal del efecto.
 
 ## Quinto Punto
@@ -249,4 +277,8 @@ Dados los resultados de la especificación que escogieron en el anterior punto: 
 
 ### Solución Quinto Punto
 ¿Como se puede interpretar el resultado del modelo_d?
-Respuesta: La interpretación estadistica del coeficiente de la variable corrupción (Corrupt) en el modelo_d indica que la corrupción municipal incrementa en 0.3 punto porcentuales la proporción de estudiantes que hicieron trampa en el colegio. En terminos de p-valor, la variable corrupción es significativa al 5%, por lo tanto, se rechaza la hipótesis nula (Ho) porque exisite al menos 5% de probabilidad de observar la relación entre la corrupcion y la trampa en el colegio.
+
+**Respuesta:**
+
+La interpretación estadistica del coeficiente de la variable corrupción (Corrupt) en el modelo_d indica que la corrupción municipal incrementa en 0.3 punto porcentuales la proporción de estudiantes que hicieron trampa en el colegio. En terminos de p-valor, la variable corrupción es significativa al 5%, por lo tanto, se rechaza la hipótesis nula (Ho) porque exisite al menos 5% de probabilidad de observar la relación entre la corrupcion y la trampa en el colegio.
+

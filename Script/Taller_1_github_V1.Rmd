@@ -1,6 +1,6 @@
 ---
 title: "EVALUACIÓN DE IMPACTO - TALLER 1"
-author: "VIAFARA MORALES, JORGE ELIECER"
+author: "VIÁFARA MORALES, JORGE ELIECER"
 date: "2025-08-23"
 output:
   pdf_document: default
